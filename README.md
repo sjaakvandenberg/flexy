@@ -29,6 +29,7 @@ Change your `theme` variable to `flexy` in your root's `_config.yml`.
 - CSS3 animations in header
 - Uses Stylus Nib
 - normalize.css
+- Schema.org markup
 
 In the header, the `transform3d()` function is used, which triggers GPUs to render the animation. This makes the page very quick to render, as the only background image is a 2.8K big SVG. It runs without using any JavaScript out of the box.
 
