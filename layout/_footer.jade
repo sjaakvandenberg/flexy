@@ -1,3 +1,9 @@
 if theme.pubkey
   section.pubkey= theme.pubkey
-section.copyright !{link_to('http://opensource.org/licenses/MIT', 'MIT License')} &middot; Published with !{link_to('https://hexo.io/', 'Hexo')} &middot; !{link_to(config.feed.url, 'RSS Feed')}
+section.copyright
+  a(href='http://opensource.org/licenses/MIT') MIT License
+  | &middot; Published with
+  a(href='https://hexo.io/') Hexo
+  if config.feed.url
+    | &middot;
+    a(href= config.feed.url) RSS Feed
