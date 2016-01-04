@@ -1,0 +1,7 @@
+webfont($family, $file, $weight = 'normal', $style = normal)
+  @font-face
+    font-family $family
+    font-style $style
+    font-weight $weight
+    src url($font-directory + $file + '.woff2') format('woff2'),
+        url($font-directory + $file + '.woff') format('woff')

@@ -1,0 +1,980 @@
+// ===========================================================================
+// Table of Contents
+// ===========================================================================
+
+//   0. Settings
+//   0.0 Imports
+//   0.1 Webfonts
+//   0.2 Typography
+//   0.3 Colors
+//   0.4 Defaults
+//   0.5 Media Queries
+//   1. Basics
+//   2. Header
+//   3. Main
+//   4. Typography
+//   5. Special Sections
+//   6. Media Queries
+//   7. Code Theme
+
+// ===========================================================================
+// 0. Settings
+// ===========================================================================
+
+// 0.0 Imports
+
+@import 'normalize.css'
+@import 'nib'
+@import '_*'
+
+// 0.1 Webfonts
+
+$font-directory = '../fonts/'
+
+webfont('Droid Serif', 'droidserif/400', 400, normal)
+webfont('Droid Serif', 'droidserif/700', 700, normal)
+webfont('Droid Serif', 'droidserif/400i', 400, italic)
+webfont('Droid Serif', 'droidserif/700i', 700, italic)
+
+webfont('Open Sans', 'opensans/300', 300, normal)
+webfont('Open Sans', 'opensans/400', 400, normal)
+webfont('Open Sans', 'opensans/600', 600, normal)
+webfont('Open Sans', 'opensans/700', 700, normal)
+webfont('Open Sans', 'opensans/800', 800, normal)
+webfont('Open Sans', 'opensans/300i', 300, italic)
+webfont('Open Sans', 'opensans/400i', 400, italic)
+webfont('Open Sans', 'opensans/600i', 600, italic)
+webfont('Open Sans', 'opensans/700i', 700, italic)
+webfont('Open Sans', 'opensans/800i', 800, italic)
+
+webfont('Fira Mono', 'fira/400', 400, normal)
+webfont('Fira Mono', 'fira/500', 500, normal)
+webfont('Fira Mono', 'fira/700', 700, normal)
+
+// 0.2 Typography
+
+      $title-font = 'Open Sans', sans-serif
+    $title-weight = 400
+    $heading-font = 'Open Sans', sans-serif
+  $heading-weight = 700
+     $button-font = 'Open Sans', sans-serif
+      $small-font = 'Droid Serif', Georgia, serif
+    $small-weight = 400
+       $body-font = 'Droid Serif', Georgia, serif
+     $body-weight = 400
+       $code-font = 'Fira Mono', monospace, sans-serif
+     $code-weight = 400
+
+// 0.3 Colors
+
+   $red-orange = hsla(16, 98%, 59%, 1)
+       $orange = hsla(31, 98%, 52%, 1)
+$yellow-orange = hsla(39, 99%, 55%, 1)
+       $yellow = hsla(53, 100%, 62%, 1)
+ $green-yellow = hsla(80, 72%, 54%, 1)
+        $green = hsla(119, 78%, 59%, 1)
+   $blue-green = hsla(183, 70%, 61%, 1)
+         $blue = hsla(205, 93%, 54%, 1)
+  $blue-purple = hsla(245, 73%, 68%, 1)
+       $purple = hsla(301, 67%, 57%, 1)
+   $red-purple = hsla(332, 82%, 60%, 1)
+          $red = hsla(356, 100%, 63%, 1)
+
+        $white = hsla(0, 0, 98%, 1)
+         $gray = hsla(0, 0, 45%, 1)
+        $black = hsla(0, 0, 8%, 1)
+
+   $light-gray = lighten($gray, 95%)
+   $shade-gray = lighten($gray, 35%)
+    $dark-gray = darken($gray, 35%)
+
+   $light-blue = lighten($blue, 25%)
+   $shade-blue = darken($blue, 25%)
+    $dark-blue = darken($blue, 70%)
+  $darker-blue = darken($blue, 80%)
+
+// 0.4 Defaults
+
+$author = 'Sjaak van den Berg'
+
+$title-color = $blue
+$description-color = $white
+$header-link-color = $blue
+$link-hover-header-color = $blue
+
+$body-color = $black
+$post-meta-color = $gray
+$body-link-color = $black
+$body-link-hover-color = $blue
+
+$background-color = $light-gray
+$accent-color = $shade-gray
+$quote-accent-color = $blue
+
+$background-header-path = '../images/header.jpg'
+
+$footer-pubkey-color = $gray
+
+$default-padding = 20px
+
+// 0.5 Media Queries
+
+$tablet = 'only screen and (max-width: 60em)'
+$phone = 'only screen and (max-width: 40em)'
+
+// ===========================================================================
+// 1. Basics
+// ===========================================================================
+
+html
+  font-size 62.5%
+
+body
+  color $body-color
+  margin 0
+  height 100vh
+  flex-direction column // mobile first
+  font-family $body-font
+  font-size 1.62rem
+  font-weight $body-weight
+  line-height 1.6em
+
+a
+  color $body-link-color
+  text-decoration underline
+  &:hover
+    transition color .3s ease
+
+::-moz-selection
+::selection
+  color $body-color
+  background $blue
+  text-shadow none
+
+header,
+main
+  overflow-y auto
+  -webkit-overflow-scrolling touch
+  padding 20px
+
+@keyframes slide
+  0%
+    transform translate3d(0, 0, 0)
+  100%
+    transform translate3d(-240px, -240px, 0)
+
+// ===========================================================================
+// 2. Header
+// ===========================================================================
+
+header
+  background-image linear-gradient(8deg, hsl(220, 100%, 12%), hsl(220, 40%, 4%) 50%)
+  flex 1
+  overflow hidden
+  position relative
+  text-align center
+  a
+  h1
+  p
+  nav
+    position relative
+    z-index 2
+  // Link styling
+  a
+    color $header-link-color
+    text-decoration none
+    &:hover
+      text-decoration underline
+  // Blog title
+  h1
+    color $title-color
+    font-family $title-font
+    font-size 4.5rem
+    font-weight $title-weight
+    letter-spacing -1px
+    text-shadow 0 1px 6px hsla(0, 0, 0, .5)
+    a:hover
+      text-decoration none
+  // Logo
+  img
+    line-height 0
+    margin 0 -32px 0 0
+    max-height 100px
+    width auto
+  // Blog description
+  p
+    color $description-color
+    font-family $body-font
+    font-size 1.62rem
+    font-weight $body-weight
+    letter-spacing 0
+    margin 0
+    text-shadow 0 1px 3px hsla(0, 0, 0, .35)
+  // Navigation list
+  nav ul
+    list-style none
+    margin 0
+    padding 0
+    li
+      display inline-block
+      padding 12px 0 12px 12px
+      &:after
+        content '·'
+        padding-left 12px
+      &:last-child
+        &:after
+          content ''
+  .space
+    animation slide 8s linear infinite
+    background-image url('../images/stars.svg')
+    background-position center center
+    background-size 240px
+    height 400%
+    left 0
+    position absolute
+    top 0
+    width 400%
+    z-index 1
+
+// ===========================================================================
+// 3. Main
+// ===========================================================================
+
+main
+  // Background and text flow
+  background $background-color
+  flex 2
+  hypens auto
+  overflow-x hidden
+  padding 20px // Smaller padding on small screens
+  text-align left
+  word-break normal
+  word-wrap break-word
+  // Links to articles
+  a.article
+    color $body-color
+    text-decoration none
+    // No border-bottom on last article
+    &:last-of-type
+      article
+        border none
+        &:after
+          background none
+          border none
+          box-shadow none
+          padding-bottom 20px
+    &:hover h2
+      color $body-link-hover-color
+      transition color .3s ease
+  .page-title
+    color $shade-gray
+    font-family $body-font
+    font-size 1.62rem
+    font-style italic
+    font-weight $body-weight
+    margin 0
+    padding-bottom 16px
+    text-align center
+  .post-meta
+    color $shade-gray
+    display inline-block
+    font-family $small-font
+    font-weight $small-weight
+    font-size 1.62rem
+    margin 0
+  // Article list
+  article.item
+    border-bottom 1px solid hsla(0, 0, 0, .15)
+    color $body-color
+    padding 40px
+    text-align center
+    h2
+      break-word normal
+      color $body-color
+      margin-bottom 16px
+      word-wrap break-word
+    p.post-excerpt
+      font-size 1.62rem
+      line-height 1.6em
+      margin 16px 0 0 0
+    &:after
+      display block
+      content ''
+      width 7px
+      height 7px
+      // Circle border
+      border darken($background-color, 12%) 1px solid
+      position relative
+      top 45px
+      left 50%
+      margin-left -5px
+      // Inside the circle
+      background darken($background-color, 15%)
+      border-radius 100%
+      // Around the circle
+      box-shadow $background-color 0 0 0 5px
+  // Full article
+  article.full
+    padding-bottom 20px
+    h2
+      margin 0
+    ul
+      list-style none
+      padding 0
+    a
+      text-decoration underline
+      &:hover
+        color $body-link-hover-color
+    p + img
+      margin-top 0
+    img
+      // Images are responsive by default
+      border-radius 3px
+      height auto
+      margin-top 20px
+      width 100%
+    // Blockquotes within articles
+    blockquote
+      box-sizing border-box
+      margin 1.6em 0 1.6em 0
+      padding 0 0 0 1.6em
+      border-left $quote-accent-color .4em solid
+      footer
+        text-align left
+        padding 0
+        border 0
+        background none
+        color $body-color
+        line-height 1.6em
+        font-size .9em
+      p
+        margin .8em 0
+        font-style italic
+      small
+        display inline-block
+        margin .8em 0 .8em 1.5em
+        font-size .9rem
+        color $light-gray
+        &:before
+          content '\2014 \00A0'
+      ol
+      ul
+        font-style italic
+      cite
+        font-weight bold
+        &:before
+          content '—'
+          padding 0 .3em
+        a
+          color $link-article-color
+          font-weight normal
+    // Images without shadows and round borders
+    .noshadow
+      box-shadow none
+      border-radius 0
+    // Display logos small and next to each other
+    .logos
+      display inline-block
+      clear both
+      img
+        width auto
+    .left
+      float left
+    .right
+      float right
+    // Form styling
+    form
+      .form-column
+        display inline-block
+        text-align left
+        width 100%
+        input[type="name"]
+        input[type="email"]
+          width 100%
+        input
+        textarea
+          padding .5em .6em
+          margin 0
+          border 1px solid $light-gray
+          box-shadow inset 0 1px 3px $shade-gray
+          border-radius 2px
+          box-sizing border-box
+          overflow hidden
+        textarea
+          margin .5em .5em .5em 0
+        input[type="checkbox"]
+          margin .5em
+        label
+          margin-right .5em
+        textarea
+          width 100%
+        button
+          background $blue
+          border 1px solid $shade-blue
+          box-shadow inset 0 0 0 1px $blue, 0 1px 3px $gray
+          border-radius 2px
+          box-sizing border-box
+          color $white
+          font-family $button-font
+          letter-spacing 1px
+          margin .5em .5em .5em 0
+          padding .1em .6em
+          white-space nowrap
+          text-transform uppercase
+          text-shadow 0 -1px 1px $shade-blue
+    // Buttons
+    .btn
+      border none
+      font-size inherit
+      color $white
+      background none
+      cursor pointer
+      display inline-block
+      letter-spacing 1px
+      font-weight 700
+      outline none
+      position relative
+      transition all 0.3s
+      vertical-align middle
+
+      &:after
+        content ''
+        position absolute
+        z-index -1
+        transition all .3s
+
+    .small-button
+      background $blue
+      border-radius 2px
+      box-shadow 0 2px $shade-blue
+      color $white
+      font-family $button-font
+      font-size 1.4rem
+      font-weight 700
+      line-height 1.6
+      margin 0
+      border 1px solid $shade-blue
+      padding 0 5px
+      white-space nowrap
+
+      &:before
+        left 130%
+        top 0
+
+      &:hover
+        box-shadow 0 2px $shade-blue
+        top 1px
+
+        &:before
+          left 80%
+
+      &:active
+        box-shadow 0 0 $shade-blue
+        top 2px
+
+    .simple
+      &:hover
+        box-shadow inset 0 0 20px 1px lighten($light-blue, 25%), 1px 1px 3px $light-blue
+
+    .big-button
+      background $blue
+      color $white
+      font-family $button-font
+      box-shadow 0 6px $shade-blue
+      transition none
+      border-radius 5px
+      text-transform uppercase
+      padding 25px 80px
+      margin 15px 30px
+
+      &:hover
+        color $white
+        box-shadow 0 4px $shade-blue
+        padding 25px 80px
+        top 2px
+
+        &:before
+          left 80%
+
+      &:active
+        color $white
+        box-shadow 0 0 $shade-blue
+        padding 25px 80px
+        top 6px
+
+      &:before
+        left 130%
+        top 0
+
+    .round-button
+      border-radius 30px
+      border 3px solid darken($background-color, 10%)
+      color darken($background-color, 10%)
+      font-family $button-font
+      padding 10px 30px
+      overflow hidden
+      margin 15px 30px
+      text-transform uppercase
+
+      &:hover
+        border 3px solid $link-article-color
+        color $body-link-hover-color
+
+    .punch-button
+      background $blue
+      border-top 1px solid $shade-blue
+      border-right 1px solid $dark-blue
+      border-bottom 1px solid $darker-blue
+      border-left 1px solid $dark-blue
+      border-radius 4px
+      box-shadow inset 0 1px 10px 1px $light-blue, 0 1px 0 $darker-blue, 0 6px 0 $dark-blue, 0 8px 4px 1px $gray
+      color $white
+      font-family $button-font
+      font-size 1.8rem
+      font-weight 700
+      line-height 1.4
+      margin-bottom 10px
+      margin-top 4px
+      padding .4em
+      width 12em
+      text-align center
+      text-shadow 0 -1px 1px $shade-blue
+      text-transform uppercase
+      -webkit-background-clip padding-box
+
+      hr
+        display block
+        border-color $white
+        margin-top .4em
+        margin-bottom 0
+        padding-top .4em
+
+        &:before
+        &:after
+          display none
+
+      span
+        display block
+        color $dark-blue
+        font-family $button-font
+        font-size 1.4rem
+        font-style italic
+        letter-spacing 1px
+        text-align center
+        text-shadow 0 -1px 1px $light-blue
+        width 80%
+        margin 0 auto
+        text-transform none
+
+      &:hover
+        box-shadow inset 0 0 20px 1px lighten($light-blue, 25%), 0 1px 0 $darker-blue, 0 6px 0 $dark-blue, 0 8px 4px 1px $gray
+        cursor pointer
+
+      &:active
+        box-shadow inset 0 1px 10px 1px $light-blue, 0 1px 0 $darker-blue, 0 2px 0 $dark-blue, 0 4px 3px 0 $gray
+        margin-top 8px
+  section#comments
+    border-top 1px solid hsla(0, 0, 0, .15)
+    padding-top 20px
+  // Footer
+  footer
+    padding 0
+    text-align center
+    position relative
+    padding 4rem 0
+    border darken($background-color, 15%) 1px solid
+    font-size 1.3rem
+    line-height 2.1em
+    color lighten($body-color, 50%)
+    background darken($background-color, 5%)
+    :not(main) > a
+      color lighten($body-color, 20%)
+      font-weight 700
+      text-decoration none
+    .pubkey
+      font-family $code-font
+      font-weight 500
+      color $footer-pubkey-color
+
+// ===========================================================================
+// 4. Typography Basics
+// ===========================================================================
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+  font-family $heading-font
+  font-weight $heading-weight
+  line-height 1
+  margin-top 0
+  margin-bottom 20px
+  text-rendering optimizeLegibility
+
+h1
+  font-size 4.5rem
+  letter-spacing -2px
+  line-height 1.2em
+  text-indent -3px
+
+h2
+  font-size 3.9rem
+  letter-spacing -1px
+  line-height 1.2em
+  text-indent -2px
+
+h3
+  font-size 3.3rem
+
+h4
+  font-size 2.8rem
+  margin-bottom 0
+
+h5
+  font-size 2.4rem
+
+h6
+  font-size 2rem
+
+a
+  transition color ease .3s
+  text-decoration none
+  &:hover
+    color $link-article-color
+
+hr
+  display block
+  height 1px
+  border 0
+  border-top darken($background-color, 15%) 1px solid
+  margin 40px 0
+  padding 0
+
+  &:after
+    display block
+    content ''
+    width 7px
+    height 7px
+    border darken($background-color, 12%) 1px solid // circle border
+    position relative
+    top -5px
+    left 50%
+    margin-left -5px
+    background darken($background-color, 15%)  // inside the circle
+    border-radius 100%
+    box-shadow $background-color 0 0 0 5px // around the circle
+
+// ===========================================================================
+// 5. Special Sections
+// ===========================================================================
+
+p
+ul
+ol
+dl
+table
+  margin 20px 0
+
+ol ol
+ul ul
+ul ol
+ol ul
+  margin 5px 0
+
+dl dt
+  clear left
+  float left
+  font-weight bold
+  margin-bottom 12px
+  overflow hidden
+  text-align right
+  text-overflow ellipsis
+  white-space nowrap
+  width 180px
+
+dl dd
+  margin-left 200px
+  margin-bottom 12px
+
+code
+tt
+  background $body-link-hover-color
+  border-radius .2em
+  color $white
+  font-family $code-font
+  font-size .85em
+  font-weight $code-weight
+  padding 1px 3px
+  white-space pre-wrap
+
+pre
+  -moz-box-sizing border-box
+  box-sizing border-box
+  background #222
+  border-radius .3em
+  color $white
+  font-family $code-font
+  font-size .9em
+  font-weight $code-weight
+  margin 1.6em 0
+  overflow auto
+  padding 10px
+  white-space pre
+  width 100%
+
+pre code
+tt
+  background transparent
+  border none
+  font-size inherit
+  padding 0
+  white-space -moz-pre-wrap
+  white-space pre-wrap
+
+kbd
+  background #f4f4f4
+  border #ccc 1px solid
+  border-radius 3px
+  box-shadow 0 1px 0 rgba(0, 0, 0, .2),   0 0 0 2px $white inset
+  color #666
+  display inline-block
+  font-family $body-font
+  font-size .9em
+  margin-bottom .4em
+  padding 0 5px
+  text-shadow 0 1px 0 $white
+  white-space nowrap
+
+iframe
+.fluid-width-video-wrapper
+  display block
+  margin 1.6em 0
+
+/* When a video is inside the fitvids wrapper, drop the
+margin on the iframe, cause it breaks stuff. */
+.fluid-width-video-wrapper iframe
+  margin 0
+
+/* Hexo: Youtube, other video container */
+.video-container
+  position relative
+  padding-top 56.25%
+  height 0
+  overflow hidden
+
+  iframe
+  object
+  embed
+    position absolute
+    top 0
+    left 0
+    width 100%
+    height 100%
+    margin-top 0
+
+table > tbody > tr > td
+  padding-right 10px
+
+/* Hexo: Syntax Highlighter */
+figure.highlight
+  background rgb(34, 34, 34)
+  border-radius .3em
+  border 1px solid darken($white, 3%)
+  color darken($white, 3%)
+  font-size .9em
+  line-height 1.45em
+  margin 1em 0 2.1em 0
+  overflow auto
+  white-space pre
+  word-wrap normal
+
+  &.md
+    td.gutter
+      display none
+
+  figcaption
+    padding 7px 10px
+    font-family 'Open Sans', sans-serif
+    font-size .8em
+    color #839496
+    background #191919
+    text-align center
+
+    a
+      margin-left .3em
+
+  table
+    margin 0
+
+  table > tbody > tr > td
+    padding 0
+    background $white
+
+  table > tbody > tr > td.gutter
+    background-color #222
+    max-width 40px
+    text-align right
+    pre span.line
+      color #839496
+
+  pre
+    border none
+    border-radius 0
+    margin 0
+
+// ===========================================================================
+// 6. Media Queries
+// ===========================================================================
+
+@media (min-width 720px)
+
+  body
+    display flex
+    flex-direction row
+
+    header
+      flex 1
+      overflow hidden
+      text-align right
+      padding 40px
+
+      nav
+        ul
+          padding-top 24px
+          li
+            display block
+            line-height 1.6em
+            padding 0
+            &:after
+              content ''
+              padding 0
+
+    main
+      flex 2
+      padding 40px
+      form
+        .form-column
+          input[type="name"]
+          input[type="email"]
+            width 35%
+            margin .5em .5em .5em 0
+
+// ===========================================================================
+// 7. Code Theme
+// ===========================================================================
+
+// Theme: Solarized - Github
+// More themes here: http://softwaremaniacs.org/media/soft/highlight/test.html
+
+pre .comment
+pre .template_comment
+.diff pre .header
+pre .javadoc
+  color #75715e
+
+pre .function .keyword
+  color #66d9ef
+
+pre .keyword
+.css .rule pre .keyword
+pre .winutils
+.javascript pre .title
+.nginx pre .title
+pre .subst
+pre .request
+pre .status
+  color #F92672
+
+pre .number
+pre .hexcolor
+.ruby pre .constant
+  color #ae81ff
+
+pre .value
+  color #e6db74
+
+pre .string
+pre .tag pre .value
+pre .phpdoc
+.tex pre .formula
+  color #e6db74
+
+pre .title
+pre .id
+.coffeescript pre .params
+.scss pre .preprocessor
+  color #f92672
+
+.javascript pre .title
+.lisp pre .title
+.clojure pre .title
+pre .subst
+  font-weight normal
+
+pre .class pre .title
+.haskell pre .type
+.vhdl pre .literal
+.tex pre .command
+  color #e6db74
+
+pre .literal
+  color #ae81ff
+
+pre .tag
+pre .tag pre .title
+pre .rules pre .property
+.django pre .tag pre .keyword
+  color #a6e22e
+  font-weight normal
+
+pre .attribute
+pre .variable
+.lisp pre .body
+  color #a6e22e
+
+pre .regexp
+  color #ae81ff
+
+pre .symbol
+.ruby pre .symbol pre .string
+.lisp pre .keyword
+.tex pre .special
+pre .prompt
+  color #f92672
+
+pre .built_in
+.lisp pre .title
+.clojure pre .built_in
+  color #e6db74
+
+pre .preprocessor
+pre .pragma
+pre .pi
+pre .doctype
+pre .shebang
+pre .cdata
+  color #f8f8f2
+
+pre .deletion
+  background #75715e
+
+pre .addition
+  background #e6db74
+
+.diff pre .change
+  background #f92672
+
+pre .chunk
+  color #a6e22e
+
+/* Github */
+
+.gist table
+  margin 0
+  font-size 1.4rem
+
+.gist .line-number
+  min-width 25px
+  font-size 1.1rem
