@@ -8,7 +8,6 @@
 //   0.2 Typography
 //   0.3 Colors
 //   0.4 Defaults
-//   0.5 Media Queries
 //   1. Basics
 //   2. Header
 //   3. Main
@@ -53,62 +52,63 @@ webfont('Fira Mono', 'fira/700', 700, normal)
 
 // 0.2 Typography
 
-      $title-font = 'Open Sans', sans-serif
-    $title-weight = 400
-    $heading-font = 'Open Sans', sans-serif
-  $heading-weight = 700
-     $button-font = 'Open Sans', sans-serif
-      $small-font = 'Droid Serif', Georgia, serif
-    $small-weight = 400
-       $body-font = 'Droid Serif', Georgia, serif
-     $body-weight = 400
-       $code-font = 'Fira Mono', monospace, sans-serif
-     $code-weight = 400
+$title-font   = 'Open Sans', sans-serif
+$heading-font = 'Open Sans', sans-serif
+$button-font  = 'Open Sans', sans-serif
+$small-font   = 'Droid Serif', Georgia, serif
+$body-font    = 'Droid Serif', Georgia, serif
+$code-font    = 'Fira Mono', monospace, sans-serif
+
+$title-weight   = 400
+$heading-weight = 700
+$small-weight   = 400
+$body-weight    = 400
+$code-weight    = 400
 
 // 0.3 Colors
 
-   $red-orange = hsla(16, 98%, 59%, 1)
-       $orange = hsla(31, 98%, 52%, 1)
+$red-orange    = hsla(16, 98%, 59%, 1)
+$orange        = hsla(31, 98%, 52%, 1)
 $yellow-orange = hsla(39, 99%, 55%, 1)
-       $yellow = hsla(53, 100%, 62%, 1)
- $green-yellow = hsla(80, 72%, 54%, 1)
-        $green = hsla(119, 78%, 59%, 1)
-   $blue-green = hsla(183, 70%, 61%, 1)
-         $blue = hsla(205, 93%, 54%, 1)
-  $blue-purple = hsla(245, 73%, 68%, 1)
-       $purple = hsla(301, 67%, 57%, 1)
-   $red-purple = hsla(332, 82%, 60%, 1)
-          $red = hsla(356, 100%, 63%, 1)
+$yellow        = hsla(53, 100%, 62%, 1)
+$green-yellow  = hsla(80, 72%, 54%, 1)
+$green         = hsla(119, 78%, 59%, 1)
+$blue-green    = hsla(183, 70%, 61%, 1)
+$blue          = hsla(205, 93%, 54%, 1)
+$blue-purple   = hsla(245, 73%, 68%, 1)
+$purple        = hsla(301, 67%, 57%, 1)
+$red-purple    = hsla(332, 82%, 60%, 1)
+$red           = hsla(356, 100%, 63%, 1)
 
-        $white = hsla(0, 0, 98%, 1)
-         $gray = hsla(0, 0, 45%, 1)
-        $black = hsla(0, 0, 8%, 1)
+$white         = hsla(0, 0, 98%, 1)
+$gray          = hsla(0, 0, 45%, 1)
+$black         = hsla(0, 0, 8%, 1)
 
-   $light-gray = lighten($gray, 95%)
-   $shade-gray = lighten($gray, 35%)
-    $dark-gray = darken($gray, 35%)
+$light-gray    = lighten($gray, 95%)
+$shade-gray    = lighten($gray, 35%)
+$dark-gray     = darken($gray, 35%)
 
-   $light-blue = lighten($blue, 25%)
-   $shade-blue = darken($blue, 25%)
-    $dark-blue = darken($blue, 70%)
-  $darker-blue = darken($blue, 80%)
+$light-blue    = lighten($blue, 25%)
+$shade-blue    = darken($blue, 25%)
+$dark-blue     = darken($blue, 70%)
+$darker-blue   = darken($blue, 80%)
 
 // 0.4 Defaults
 
 $author = 'Sjaak van den Berg'
 
-$title-color = $blue
-$description-color = $white
-$header-link-color = $blue
+$title-color             = $blue
+$description-color       = $white
+$header-link-color       = $blue
 $link-hover-header-color = $blue
 
-$body-color = $black
-$post-meta-color = $gray
-$body-link-color = $black
+$body-color            = $black
+$post-meta-color       = $gray
+$body-link-color       = $black
 $body-link-hover-color = $blue
 
-$background-color = $light-gray
-$accent-color = $shade-gray
+$background-color   = $light-gray
+$accent-color       = $shade-gray
 $quote-accent-color = $blue
 
 $background-header-path = '../images/header.jpg'
@@ -116,11 +116,6 @@ $background-header-path = '../images/header.jpg'
 $footer-pubkey-color = $gray
 
 $default-padding = 20px
-
-// 0.5 Media Queries
-
-$tablet = 'only screen and (max-width: 60em)'
-$phone = 'only screen and (max-width: 40em)'
 
 // ===========================================================================
 // 1. Basics
@@ -156,12 +151,6 @@ main
   overflow-y auto
   -webkit-overflow-scrolling touch
   padding 20px
-
-@keyframes slide
-  0%
-    transform translate3d(0, 0, 0)
-  100%
-    transform translate3d(-240px, -240px, 0)
 
 // ===========================================================================
 // 2. Header
@@ -235,6 +224,13 @@ header
     top 0
     width 400%
     z-index 1
+
+// Header animation
+@keyframes slide
+  0%
+    transform translate3d(0, 0, 0)
+  100%
+    transform translate3d(-240px, -240px, 0)
 
 // ===========================================================================
 // 3. Main
