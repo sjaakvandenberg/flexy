@@ -15,7 +15,7 @@ You can see the theme in action on my [website](https://svdb.co/).
 ```
 $ git clone https://github.com/sjaakvandenberg/flexy themes/flexy
 $ npm un -S hexo-renderer-ejs
-$ npm i -S hexo-rendered-jade
+$ npm i -S hexo-renderer-jade
 ```
 
 Change your `theme` variable to `flexy` in your root's `_config.yml`.
