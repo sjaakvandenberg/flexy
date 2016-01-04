@@ -47,6 +47,10 @@ comments: false
 ---
 ```
 
+## Articles Page
+
+In your root's `_config.yml`, set `filename_case` to `1`. Create a new `Articles` page by giving the `hexo new page 'Articles'` command. `layout/_content.jade` will output a yearly summary of posts.
+
 ## Fonts
 
 This theme uses Open Sans for headings, Droid Serif for body text and Fira Mono for code. They're located in the `source/fonts` directory in `WOFF` and `WOFF2` formats.
