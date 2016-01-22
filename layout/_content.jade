@@ -1,15 +1,15 @@
 //- index page
 if is_home()
-  h4.page-title Recent Articles
+  h4.page-title #{__('content.recent')}
   each post in site.posts.sort('date', 'desc').toArray()
     - var reading_length = Math.ceil(post.content.replace(/[^a-zA-Z\s]/g, '').split(/[\s]+/).length / 250)
     a.article(href= config.root + post.path)
       article.item(itemscope, itemprop='blogPost', itemtype='https://schema.org/BlogPosting')
         h2(itemprop='headline')= post.title
         span.post-meta
-          | Published on
-          time(itemprop='datePublished', datetime= post.date.toISOString())= full_date(new Date(post.date), ' dddd, MMMM Do YYYY') + ' at ' + full_date(new Date(post.date), 'H:mm')
-          | , #{reading_length} min read
+          | #{__('content.posted')}
+          time(itemprop='datePublished', datetime= post.date.toISOString())= full_date(new Date(post.date), ' dddd, MMMM Do YYYY ') + __('content.timed') + full_date(new Date(post.date), ' H:mm')
+          | , #{reading_length} #{__('content.read')}
         p(itemprop='text').post-excerpt= post.intro ? post.intro : post.content.replace(/<(?:.|\n)*?>/gm, '').substr(0, 220)
   footer(itemscope, itemtype='https://schema.org/WPFooter')
     include _footer
@@ -44,18 +44,18 @@ else if is_page()
     if page.updated
       span.post-meta
         | Last updated on
-        time(itemprop='dateModified', datetime= page.date.toISOString())= full_date(new Date(page.updated), ' dddd, MMMM Do YYYY') + ' at ' + full_date(new Date(page.updated), 'H:mm')
+        time(itemprop='dateModified', datetime= page.date.toISOString())= full_date(new Date(page.updated), ' dddd, MMMM Do YYYY ') + __('content.timed') + full_date(new Date(page.updated), ' H:mm')
     != page.content
   include _comments
 else if is_post()
   article.full
     h1(itemprop='headline')= page.title
     span.post-meta
-      | Published on
-      time(itemprop='datePublished', datetime= page.date.toISOString())= full_date(new Date(page.date), ' dddd, MMMM Do YYYY') + ' at ' + full_date(new Date(page.date), 'H:mm')
+      | #{__('content.posted')}
+      time(itemprop='datePublished', datetime= page.date.toISOString())= full_date(new Date(page.date), ' dddd, MMMM Do YYYY ') + __('content.timed') + full_date(new Date(page.date), ' H:mm')
       if page.updated
         br
-        | Last updated on
-        time(itemprop='dateModified', datetime= page.date.toISOString())= full_date(new Date(page.updated), ' dddd, MMMM Do YYYY') + ' at ' + full_date(new Date(page.updated), 'H:mm')
+        | #{__('content.updated')}
+        time(itemprop='dateModified', datetime= page.date.toISOString())= full_date(new Date(page.updated), ' dddd, MMMM Do YYYY ') + __('content.timed') + full_date(new Date(page.updated), ' H:mm')
     != page.content
   include _comments

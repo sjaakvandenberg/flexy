@@ -8,4 +8,4 @@ nav(itemscope, itemtype='https://schema.org/SiteNavigationElement')
   ul
     each url, label in theme.menu
       li(itemprop='name')
-        a(href= url, alt= label, title= label, itemprop='url')= label
+        a(href= url, alt= label, title= label, itemprop='url')= __('menu.' + label)
