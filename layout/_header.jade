@@ -9,3 +9,8 @@ nav(itemscope, itemtype='https://schema.org/SiteNavigationElement')
     each url, label in theme.menu
       li(itemprop='name')
         a(href= url, alt= label, title= label, itemprop='url')= __('menu.' + label)
+div.social
+  each url, label in theme.social
+    span.social-icon
+      a(href=url, target=_blank)
+        i(class='fa fa-#{label}')

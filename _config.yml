@@ -13,3 +13,7 @@ excerpt_link: Read more
 # Miscellaneous
 rss: /atom.xml
 google_analytics:
+
+social: 
+  github: github.com
+  linkedin: linkedin.com
